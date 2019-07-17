@@ -4,7 +4,7 @@ stage("Build") {
     node('test-dynamic-slave') {
 
         sfScmInfo = checkout([$class: 'GitSCM',
-            branches: [[name: '*']],
+            branches: [[name: '*/master']],
             doGenerateSubmoduleConfigurations: false,
             extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'snowflake']],
             submoduleCfg: [],
@@ -85,7 +85,7 @@ def makeTestStep(iteration) {
     return {
         node("test-dynamic-slave2") {
             sfScmInfo = checkout([$class: 'GitSCM',
-                branches: [[name: '*']],
+                branches: [[name: '*/master']],
                 doGenerateSubmoduleConfigurations: false,
                 extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'snowflake']],
                 submoduleCfg: [],
@@ -134,7 +134,7 @@ if (!cancelled) {
         node('test-dynamic-slave2') {
 
             sfScmInfo = checkout([$class: 'GitSCM',
-                branches: [[name: '*']],
+                branches: [[name: '*/master']],
                 doGenerateSubmoduleConfigurations: false,
                 extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'snowflake']],
                 submoduleCfg: [],
